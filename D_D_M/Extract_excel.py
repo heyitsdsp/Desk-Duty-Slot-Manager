@@ -1,15 +1,21 @@
-import xlrd as xlr
+import os
 import random
+try:
+    import xlrd as xlr
+except ImportError:
+    print("This file needs XLRD to run , please execute 'pip install xlrd' and run this file again")
+    exit()
 
-loc=("C:\\Users\\Dev Shankar Paul\\Desktop\\D_D_M")
+loc=os.getcwd()+"\\slots.xlsx"
 
-wb=xlr.open_workbook("Free Slots Timetable - IEEE.xlsx","rb")
-
+wb=xlr.open_workbook(loc)
 names=[]
 monday={}
 tuesday={}
 wednesday={}
-c=0;
+
+c=0
+
 
 
 while(c!=3):
