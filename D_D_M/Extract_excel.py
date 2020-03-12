@@ -9,12 +9,13 @@ except ImportError:
 loc=os.getcwd()+"\\slots.xlsx"
 
 wb=xlr.open_workbook(loc)
-
 names=[]
 monday={}
 tuesday={}
 wednesday={}
+
 c=0
+
 
 
 while(c!=3):
