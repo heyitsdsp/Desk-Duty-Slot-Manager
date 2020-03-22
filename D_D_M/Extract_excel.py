@@ -10,45 +10,46 @@ loc=os.getcwd()+"\\slots.xlsx"
 
 wb=xlr.open_workbook(loc)
 names=[]
-monday={}
-tuesday={}
-wednesday={}
+day={}
 
 c=0
 
-
-
-while(c!=3):
+while(c!=1):
     sheet=wb.sheet_by_index(c)
     for j in range(1,sheet.ncols):
         names.clear()
         for i in range(2,sheet.nrows):
             if(sheet.cell_value(i,j)=='yes' or sheet.cell_value(i,j)=='Yes'):
                 names.append(sheet.cell_value(i,0))
-        if(c==0):
-            monday[sheet.cell_value(1,j)]=names[0:len(names)]
-        elif(c==1):
-            tuesday[sheet.cell_value(1,j)]=names[0:len(names)]
+            day[sheet.cell_value(1,j)]=names[0:len(names)]
+    tt={}
+    sjt={}
+
+    for i in day.keys():
+        tt[i]=[]
+        sjt[i]=[]
+
+    name=[]
+
+    for i in day.keys():
+        name.clear()
+        while(len(name)!=3):
+            value1=random.randrange(0,len(day[i])-1,1)
+            names=day[i]
+            name.append(names[value1])
+            day[i].remove(names[value1])
+        tt[i]=name[0:len(name)]
+
+    print(tt)
+    print('\n')
+    for i in day.keys():
+        if(len(day[i])>=3):
+            sjt[i]=day[i][:3]
         else:
-            wednesday[sheet.cell_value(1,j)]=names[0:len(names)]
+            sjt[i]=day[i]
+
+    print(sjt)
+
     c+=1
+    
 
-mondaytt={}
-mondaysjt={}
-
-for i in monday.keys():
-    mondaytt[i]=[]
-    mondaysjt[i]=[]
-
-name=[]
-
-for i in mondaytt.keys():
-    name.clear()
-    while(len(name)!=3):
-        value1=random.randrange(0,len(monday[i])-1,1)
-        names=monday[i]
-        name.append(names[value1])
-        monday[i].remove(names[value1])
-    mondaytt[i]=name[0:len(name)]
-
-print(mondaytt)
