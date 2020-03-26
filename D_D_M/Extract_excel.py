@@ -13,10 +13,6 @@ except ImportError:
     print("This file needs Openpyxl to run , please execute 'pip install openpyxl' and run this file again")
     exit()
 
-def list_to_string(list1):
-    str1=''
-    return(str1.join(list1))
-
 loc=os.getcwd()+"\\slots.xlsx"
 
 wb=xlr.open_workbook(loc)
